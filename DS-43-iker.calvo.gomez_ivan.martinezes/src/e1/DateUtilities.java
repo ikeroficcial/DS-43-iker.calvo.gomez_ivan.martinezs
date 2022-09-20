@@ -63,10 +63,7 @@ public class DateUtilities {
             return false;
         }
         else {
-            if (!(numberOfDays(mes1, ano1) >= dia1)) {
-                return false;
-            } else {return true;
-            }
+            return numberOfDays(mes1, ano1) >= dia1;
 
         }
 
