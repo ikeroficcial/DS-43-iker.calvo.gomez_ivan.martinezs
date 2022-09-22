@@ -14,7 +14,6 @@ public class SocialDistance {
             if (layout==layout2){end=true;}
             for (i=0;i<layout.length;i++){
                 for (j=0;j<layout[i].length;j++){
-
                     layout2=layout;
                     if (layout[i][j]=='#') {
                         contador = 0;
