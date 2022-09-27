@@ -1,7 +1,7 @@
 package e4;
 
  enum MovieRating {
-     NOT_RATED(0),
+     NOT_RATED(-1),
     MEDIOCRE (4),
     BAD(2),
     GOOD(6),
@@ -16,11 +16,7 @@ package e4;
          this.valor=valor;
      }
     public boolean isBetterThan(MovieRating movie) {
-        if (this == NOT_RATED && movie == AWFUL) {
-            return true;
-        } else if (movie == NOT_RATED && this == AWFUL) {
-            return false;
-        } else if (this.getNumericRating() > movie.getNumericRating()) {
+         if (this.getNumericRating() > movie.getNumericRating()) {
             return true;
         } else return false;
     }

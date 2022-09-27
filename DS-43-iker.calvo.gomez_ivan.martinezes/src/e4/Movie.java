@@ -45,7 +45,7 @@ public class Movie {
             throw new NoSuchElementException();
         }
         for (MovieRating m : ratings) {
-            if (m.isBetterThan(MovieRating.NOT_RATED)){
+            if (!MovieRating.NOT_RATED.isBetterThan(m)){
             result += m.getNumericRating();
             contador++;
             }
