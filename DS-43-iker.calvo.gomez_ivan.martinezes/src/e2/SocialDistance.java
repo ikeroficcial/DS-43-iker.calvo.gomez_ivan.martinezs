@@ -4,124 +4,130 @@ public class SocialDistance {
     public static char [][] seatingPeople ( char [][] layout ){
         char [][] layout2=null;
         boolean end=false;
-        int i,j,contador;
+        int i,j,contador,bucle=0;
         for (i=0;i<layout.length;i++){
             for (j=0;j<layout[i].length;j++){
-               if (layout[i][j]=='A'){layout[i][j]='#';}
+                if (layout[i][j]=='A'){
+                    layout[i][j]='#';
+                }
             }
         }
         while (!end){
-            if (layout==layout2){end=true;}
-            for (i=0;i<layout.length;i++){
-                for (j=0;j<layout[i].length;j++){
-                    layout2=layout;
-                    if (layout[i][j]=='#') {
-                        contador = 0;
-                        if (i == 0 && j == 0) {
-                            contador = -1;
-                        }
-                        else if (i == 0 && j == (layout[i].length)-1) {
-                            contador = -1;
-                        }else if (i == 0) {
-                            if (layout[i][j - 1] == '#') {
-                                contador++;
-                            }
-                            if (layout[i + 1][j - 1] == '#') {
-                                contador++;
-                            }
-                            if (layout[i + 1][j] == '#') {
-                                contador++;
-                            }
-                            if (layout[i + 1][j + 1] == '#') {
-                                contador++;
-                            }
-                            if (layout[i][j + 1] == '#') {
-                                contador++;
-                            }
+            layout2 = layout;
+            if (bucle%2==0){
+                for (i=0;i<layout.length;i++) {
+                    for (j = 0; j < layout[i].length; j++) {
+                        if (layout[i][j] == '#') {
+                            contador = 0;
+                            if (i == 0 && j == 0) {
+                                contador = -1;
+                            } else if (i == 0 && j == (layout[i].length) - 1) {
+                                contador = -1;
+                            } else if (i == 0) {
+                                if (layout[i][j - 1] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i + 1][j - 1] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i + 1][j] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i + 1][j + 1] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i][j + 1] == '#') {
+                                    contador++;
+                                }
 
-                        } else if (i==(layout.length)-1 && j==0) {
-                            contador=-1;
-                        } else if (i==(layout.length)-1 && j==(layout[i].length)-1) {
-                        contador=-1;
-                    }else if (i == (layout.length)-1) {
-                            if (layout[i][j - 1] == '#') {
-                                contador++;
+                            } else if (i == (layout.length) - 1 && j == 0) {
+                                contador = -1;
+                            } else if (i == (layout.length) - 1 && j == (layout[i].length) - 1) {
+                                contador = -1;
+                            } else if (i == (layout.length) - 1) {
+                                if (layout[i][j - 1] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i - 1][j - 1] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i - 1][j] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i - 1][j + 1] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i][j + 1] == '#') {
+                                    contador++;
+                                }
+                            } else if (j == 0) {
+                                if (layout[i - 1][j] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i - 1][j + 1] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i][j + 1] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i + 1][j + 1] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i + 1][j] == '#') {
+                                    contador++;
+                                }
+                            } else if (j == (layout[i].length - 1)) {
+                                if (layout[i - 1][j] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i - 1][j - 1] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i][j - 1] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i + 1][j - 1] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i + 1][j] == '#') {
+                                    contador++;
+                                }
+                            } else {
+                                if (layout[i - 1][j - 1] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i][j - 1] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i + 1][j - 1] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i - 1][j] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i + 1][j] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i - 1][j + 1] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i][j + 1] == '#') {
+                                    contador++;
+                                }
+                                if (layout[i + 1][j + 1] == '#') {
+                                    contador++;
+                                }
                             }
-                            if (layout[i - 1][j - 1] == '#') {
-                                contador++;
+                            if (contador >= 4) {
+                                layout[i][j] = 'A';
                             }
-                            if (layout[i - 1][j] == '#') {
-                                contador++;
-                            }
-                            if (layout[i - 1][j + 1] == '#') {
-                                contador++;
-                            }
-                            if (layout[i][j + 1] == '#') {
-                                contador++;
-                            }
-                        } else if (j==0) {
-                            if (layout[i-1][j] == '#') {
-                                contador++;
-                            }
-                            if (layout[i - 1][j + 1] == '#') {
-                                contador++;
-                            }
-                            if (layout[i ][j+1] == '#') {
-                                contador++;
-                            }
-                            if (layout[i + 1][j + 1] == '#') {
-                                contador++;
-                            }
-                            if (layout[i+1][j] == '#') {
-                                contador++;
-                            }
-                        } else if (j==(layout[i].length-1)) {
-                            if (layout[i-1][j] == '#') {
-                                contador++;
-                            }
-                            if (layout[i - 1][j - 1] == '#') {
-                                contador++;
-                            }
-                            if (layout[i][j-1] == '#') {
-                                contador++;
-                            }
-                            if (layout[i + 1][j - 1] == '#') {
-                                contador++;
-                            }
-                            if (layout[i+1][j] == '#') {
-                                contador++;
-                            }
-                        }
-                        else {
-                            if (layout[i-1][j - 1] == '#') {
-                                contador++;
-                            }
-                            if (layout[i][j - 1] == '#') {
-                                contador++;
-                            }
-                            if (layout[i + 1][j-1] == '#') {
-                                contador++;
-                            }
-                            if (layout[i - 1][j] == '#') {
-                                contador++;
-                            }
-                            if (layout[i+1][j] == '#') {
-                                contador++;
-                            }
-                            if (layout[i-1][j +1] == '#') {
-                                contador++;
-                            }
-                            if (layout[i][j + 1] == '#') {
-                                contador++;
-                            }
-                            if (layout[i + 1][j+1] == '#') {
-                                contador++;
-                            }
-                        }
-                        if (contador>=4){
-                            layout[i][j]='A';
                         }
                     }
+                }}
+            else{
+                for (i=0;i<layout.length;i++) {
+                    for (j = 0; j < layout[i].length; j++) {
+
                     if (layout[i][j]=='A') {
                         contador = 0;
                         if (i == 0 && j == 0) {
@@ -135,7 +141,7 @@ public class SocialDistance {
                                 contador++;
                             }
                         }
-                        if (i == 0 && j == (layout[i].length)-1) {
+                        else if (i == 0 && j == (layout[i].length)-1) {
                             if (layout[i][j - 1] == '#') {
                                 contador++;
                             }
@@ -145,7 +151,8 @@ public class SocialDistance {
                             if (layout[i+1][j] == '#') {
                                 contador++;
                             }
-                        }else if (i == 0) {
+                        }
+                        else if (i == 0) {
                             if (layout[i][j - 1] == '#') {
                                 contador++;
                             }
@@ -162,7 +169,8 @@ public class SocialDistance {
                                 contador++;
                             }
 
-                        } else if (i==(layout.length)-1 && j==0) {
+                        }
+                        else if (i==(layout.length)-1 && j==0) {
                             if (layout[i][j + 1] == '#') {
                                 contador++;
                             }
@@ -172,7 +180,8 @@ public class SocialDistance {
                             if (layout[i-1][j] == '#') {
                                 contador++;
                             }
-                        } else if (i==(layout.length)-1 && j==(layout[i].length)-1) {
+                        }
+                        else if (i==((layout.length)-1) && j==(layout[i].length)-1) {
                             if (layout[i][j - 1] == '#') {
                                 contador++;
                             }
@@ -182,7 +191,8 @@ public class SocialDistance {
                             if (layout[i-1][j] == '#') {
                                 contador++;
                             }
-                        }else if (i == (layout.length)-1) {
+                        }
+                        else if (i == (layout.length)-1) {
                             if (layout[i][j - 1] == '#') {
                                 contador++;
                             }
@@ -198,7 +208,8 @@ public class SocialDistance {
                             if (layout[i][j + 1] == '#') {
                                 contador++;
                             }
-                        } else if (j==0) {
+                        }
+                        else if (j==0) {
                             if (layout[i-1][j] == '#') {
                                 contador++;
                             }
@@ -214,7 +225,8 @@ public class SocialDistance {
                             if (layout[i+1][j] == '#') {
                                 contador++;
                             }
-                        } else if (j==(layout[i].length-1)) {
+                        }
+                        else if (j==(layout[i].length-1)) {
                             if (layout[i-1][j] == '#') {
                                 contador++;
                             }
@@ -261,10 +273,38 @@ public class SocialDistance {
                             layout[i][j]='#';
                         }
                     }
-
                 }
             }
 
         }
+            if (layout==layout2){
+                end=true;
+            }
+            bucle++;
+        }
+        for (i=0;i< layout.length;i++){
+            System.out.println("[");
+            for (j=0;j<layout[i].length;j++){
+                System.out.println(layout[i][j]+" ");
+            }
+            System.out.println("]\n");
+        }
     return layout;}
+    public static void main(String[] args) {
+        char[][] exampleLayout2 = {
+                {'A', '.', 'A', 'A', '.'},
+                {'A', 'A', 'A', 'A', 'A'},
+                {'A', '.', 'A', '.', 'A'},
+                {'A', 'A', 'A', 'A', '.'},
+                {'A', '.', 'A', 'A', '.'}};
+        seatingPeople(exampleLayout2);
+        char[][] resultLayout2 = {
+                {'#', '.', '#', 'A', '.'},
+                {'#', 'A', '#', 'A', '#'},
+                {'A', '.', '#', '.', '#'},
+                {'#', 'A', 'A', 'A', '.'},
+                {'#', '.', 'A', '#', '.'}};
+    }
 }
+
+
