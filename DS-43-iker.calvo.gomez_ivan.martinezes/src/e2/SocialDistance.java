@@ -4,17 +4,29 @@ public class SocialDistance {
     public static char [][] seatingPeople ( char [][] layout ){
         char [][] layout2=null;
         boolean end=false;
-        int i,j,contador,bucle=0;
+        int i,j,contador;
+        if (layout==null){
+            throw new IllegalArgumentException();
+        }
         for (i=0;i<layout.length;i++){
+            if (layout[0].length!=layout[i].length){
+                throw new IllegalArgumentException();
+            }
             for (j=0;j<layout[i].length;j++){
+
+                if (layout[i][j]!='A' && layout[i][j]!='#' && layout[i][j]!='.'){
+                    throw new IllegalArgumentException();
+                }
                 if (layout[i][j]=='A'){
                     layout[i][j]='#';
                 }
             }
         }
         while (!end){
+            if (layout==layout2){
+                end=true;
+            }
             layout2 = layout;
-            if (bucle%2==0){
                 for (i=0;i<layout.length;i++) {
                     for (j = 0; j < layout[i].length; j++) {
                         if (layout[i][j] == '#') {
@@ -123,8 +135,8 @@ public class SocialDistance {
                             }
                         }
                     }
-                }}
-            else{
+                }
+
                 for (i=0;i<layout.length;i++) {
                     for (j = 0; j < layout[i].length; j++) {
 
@@ -275,12 +287,6 @@ public class SocialDistance {
                     }
                 }
             }
-
-        }
-            if (layout==layout2){
-                end=true;
-            }
-            bucle++;
         }
         for (i=0;i< layout.length;i++){
             System.out.println("[");
